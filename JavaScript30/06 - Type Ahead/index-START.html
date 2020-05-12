@@ -19,29 +19,37 @@ const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb
 
 const cities = []
 
-const prom = fetch(endpoint)
-  .then(blob => blob.json())
-  .then(data => cities.push(...data));
+const prom = fetch(endpoint) //gets cities and states using url
+  .then(blob => blob.json()) //promise to convert data to readable json
+  .then(data => cities.push(...data)); //promise to take data in json and push into cities array.
 console.log(prom)
 
 function findMatches(wordToMatch, cities) {
   return cities.filter(place => {
     //figure out if city or state match searched
     const regex = new RegExp(wordToMatch, 'gi');
-    return place.city.match(regex) || place.state.match(regex)
-  })
+    return place.city.match(regex) || place.state.match(regex);
+  });
 
 }
 function displayMatches() {
   const matchArray = findMatches(this.value, cities)
-    console.log(matchArray);
+    const html = matchArray.map(place => {
+      return `
+      <li>
+        <span class="name">${place.city}, ${place.state}</span>
+        <span class="population">${place.population}</span>
+      </li>
+    `;
+    }).join('');
+    suggestions.innerHTML = html;
 
 }
-const searchInput = document.querySelector('.search')
+const searchInput = document.querySelector('.search');
 const suggestions = document.querySelector('.suggestions');
 
-searchInput.addEventListener('change', displayMatches)
-searchInput.addEventListener('keyup', displayMatches)
+searchInput.addEventListener('change', displayMatches);
+searchInput.addEventListener('keyup', displayMatches);
 
 </script>
 </body>
