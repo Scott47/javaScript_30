@@ -1,23 +1,4 @@
-// function enableGroupSelection(inbox) {
-//     let lastChecked = null;
-//     const checkboxes = Array.from(document.querySelectorAll(inbox))
-//   checkboxes.forEach( checkbox => checkbox.addEventListener( 'click', event => {
-//       if ( !lastChecked ) {
-//
 
-//         return;
-//       }
-//       if ( event.shiftKey ) {
-//         const start = checkboxes.indexOf( checkbox );
-//         const end   = checkboxes.indexOf( lastChecked );
-
-//         checkboxes
-//           .slice( Math.min( start, end ), Math.max( start, end ) + 1 )
-//           .forEach( checkbox => checkbox.checked = lastChecked.checked );
-//       }
-//       lastChecked = checkbox;
-//     } ) );
-//   }
 
 
   const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]')
@@ -44,3 +25,15 @@
   console.log(checkboxes)
 
   console.log("hello world")
+
+  var myFavoriteFlavor = "Phish Food";
+
+  if (myFavoriteFlavor === "chocolate") {
+      console.log("user likes chocolate");
+  } else if (myFavoriteFlavor === "vannilla") {
+      console.log("user likes vanilla");
+  } else if (myFavoriteFlavor === "mint chocolate chip") {
+      console.log("user likes mint chocolate chip");
+  } else {
+      console.log("User likes " + myFavoriteFlavor + myFavoriteFlavor + "best.")
+  }
