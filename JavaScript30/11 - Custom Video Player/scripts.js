@@ -66,4 +66,4 @@ skipButtons.forEach(button => button.addEventListener('click', skip));
 ranges.forEach(slide => slide.addEventListener('change', handleRange))
 ranges.forEach(slide => slide.addEventListener('mousemove', handleRange))
 
-//challenge: do video full screen functionality
+//challenge: do video full screen functionality 
