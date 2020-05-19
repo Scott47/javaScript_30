@@ -17,7 +17,7 @@ function debounce(func, wait = 20, immediate = true) {
 
   const sliderImages = document.querySelectorAll('.slide-in')
 
-  function checkSlide (e) {
+  function checkSlide(e) {
       //loop over images and mark when they will be fully shown on page
       sliderImages.forEach(sliderImage => {
           //halfway through the image
@@ -25,8 +25,8 @@ function debounce(func, wait = 20, immediate = true) {
           //bottom image
           const imageBottom = sliderImage.offsetTop + sliderImage.height;
           const isHalfShown = slideInAt > sliderImage.offSetTop;
-          const isNotScrollPast = window.scrollY < imageBottom;
-          if (isHalfShown && !isNotScrollPast) {
+          const isNotScrolledPast = window.scrollY < imageBottom;
+          if (isHalfShown && isNotScrolledPast) {
               sliderImage.classList.add('active')
           } else {
               sliderImage.classList.remove('active');
