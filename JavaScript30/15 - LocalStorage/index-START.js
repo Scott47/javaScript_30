@@ -2,10 +2,9 @@
 
 const addItems = document.querySelector('.add-items');
   const itemsList = document.querySelector('.plates');
-  const items = [];
+  const items = JSON.parse(localStorage.getItem('items')) || [];
 
 //listen for submit and run addItem function that will take the item value as text and put that item in the items array.
-addItems.addEventListener('submit', addItem)
 
 function addItem(e) {
     e.preventDefault();
@@ -14,17 +13,29 @@ function addItem(e) {
         text,
         done: false
     }
-//puch item name from input into items array
+    //puch item name from input into items array
     items.push(item)
-//clear Item Name input fields
+    populateList(items, itemsList)
+    localStorage.setItem('items', JSON.stringify(items))
+    //clear Item Name input fields
     this.reset();
 }
 
 function populateList(plates=[], platesList) {
-    plates.map((plate, i) => {
+    platesList.innerHTML = plates.map((plate, i) => {
         return `
-        <label for="">${plate.text}</label>
+        <li>
+        <input type="checkbox" data-index=${i} id="item${i}" ${plate.done = true ? 'checked' : ''} />
+        <label for="item${i}">${plate.text}</label>
+        </li>
         `
     }).join('')
 
 }
+
+addItems.addEventListener('submit', addItem)
+
+populateList(items, itemsList)
+
+
+
